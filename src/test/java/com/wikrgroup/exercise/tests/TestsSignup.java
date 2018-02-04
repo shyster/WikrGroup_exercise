@@ -2,6 +2,7 @@ package com.wikrgroup.exercise.tests;
 
 import com.wikrgroup.exercise.core.LetterParser;
 import com.wikrgroup.exercise.core.User;
+import com.wikrgroup.exercise.core.email.EmailApi;
 import com.wikrgroup.exercise.core.email.TempMailOrg;
 import com.wikrgroup.exercise.core.email.email_objects.EMail;
 import com.wikrgroup.exercise.core.selenium.Browser;
@@ -34,7 +35,7 @@ public class TestsSignup {
 
     @Test(description = "test signup to rozetka")
     public void testSignup() {
-        TempMailOrg tempMailOrg = new TempMailOrg();
+        EmailApi tempMailOrg = new TempMailOrg();
         User user = new User().getRandom();
 
         WebDriver driver = browser.getWebDriver();

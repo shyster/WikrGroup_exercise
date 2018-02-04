@@ -17,7 +17,7 @@ import static org.hamcrest.Matchers.is;
 /**
  * Created by Vladislav Kulasov on 03.02.2018.
  */
-public class TempMailOrg {
+public class TempMailOrg implements EmailApi {
     private static final String API_URL = "https://privatix-temp-mail-v1.p.mashape.com/request";
     private static final String API_EMAIL_DOMAINS = API_URL + "/domains/format/json/";
     private static final String API_GET_EMAILS_TEMPLATE = API_URL + "/mail/id/%s/format/json/";
