@@ -58,7 +58,7 @@ public class Signup {
 
 
     private enum UIObjects implements PoEnum {
-        FORM(null, By.id("signup_form")),
+        FORM(MainPage.BODY, By.id("signup_form")),
         NAME(FORM, By.name("title")),
         EMAIL(FORM, By.name("login")),
         PASSWORD(FORM, By.name("password")),

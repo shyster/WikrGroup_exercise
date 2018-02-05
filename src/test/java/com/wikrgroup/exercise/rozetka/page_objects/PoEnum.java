@@ -7,9 +7,9 @@ import org.openqa.selenium.WebElement;
 /**
  * Created by Vladislav Kulasov on 04.02.2018.
  */
-public interface PoEnum<T extends Enum<T>> {
+public interface PoEnum{
 
-    T getParentName();
+    Enum getParentName();
 
     By getBy();
 
