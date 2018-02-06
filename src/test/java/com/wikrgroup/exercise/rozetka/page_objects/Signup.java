@@ -31,22 +31,25 @@ public class Signup {
 
     public Signup setName(String value) {
         logger.info("set name: " + value);
-        UIObjects.NAME.getWebElement(driver).clear();
-        UIObjects.NAME.getWebElement(driver).sendKeys(value);
+        WebElement element = UIObjects.NAME.getWebElement(driver);
+        element.clear();
+        element.sendKeys(value);
         return this;
     }
 
     public Signup setEmail(String value) {
         logger.info("set email: " + value);
-        UIObjects.EMAIL.getWebElement(driver).clear();
-        UIObjects.EMAIL.getWebElement(driver).sendKeys(value);
+        WebElement element = UIObjects.EMAIL.getWebElement(driver);
+        element.clear();
+        element.sendKeys(value);
         return this;
     }
 
     public Signup setPassword(String value) {
         logger.info("set password: " + value);
-        UIObjects.PASSWORD.getWebElement(driver).clear();
-        UIObjects.PASSWORD.getWebElement(driver).sendKeys(value);
+        WebElement element = UIObjects.PASSWORD.getWebElement(driver);
+        element.clear();
+        element.sendKeys(value);
         return this;
     }
 
