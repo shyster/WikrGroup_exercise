@@ -22,6 +22,10 @@ public class PersonalData {
         return new PersonalData(driver);
     }
 
+    public static PersonalData getPage(WebDriver driver) {
+        return new PersonalData(driver);
+    }
+
     public PersonalData(WebDriver driver) {
         this.driver = driver;
         logger.info("wait Personal Data page");

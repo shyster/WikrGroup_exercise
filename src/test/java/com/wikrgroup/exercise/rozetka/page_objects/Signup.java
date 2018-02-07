@@ -22,6 +22,10 @@ public class Signup {
         return new Signup(driver);
     }
 
+    public static Signup getPage(WebDriver driver) {
+        return new Signup(driver);
+    }
+
     public Signup(WebDriver driver) {
         this.driver = driver;
         logger.info("wait Signup page");

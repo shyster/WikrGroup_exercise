@@ -57,7 +57,7 @@ public class TestsSignup {
 
         driver.get(confirmUrl);
         //validate
-        PersonalData personalData = new PersonalData(driver);
+        PersonalData personalData = PersonalData.getPage(driver);
         Assert.assertEquals(personalData.getEmail(), user.getEmail(), "Incorrect email");
         Assert.assertEquals(personalData.getName(), user.getName(), "Incorrect name");
     }
