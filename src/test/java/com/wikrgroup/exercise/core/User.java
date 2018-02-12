@@ -46,4 +46,9 @@ public class User {
     private String getRandomUserPassword() {
         return new Generex("[A-Z]{6}[0-9]{2}").random();
     }
+
+    @Override
+    public String toString() {
+        return String.format("Name:%s; Email:%s; Password:%s", name, email, password);
+    }
 }

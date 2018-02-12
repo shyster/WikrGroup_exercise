@@ -1,5 +1,6 @@
 package com.wikrgroup.exercise.rozetka.page_objects;
 
+import com.wikrgroup.exercise.core.User;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -12,10 +13,15 @@ import static com.wikrgroup.exercise.core.Constants.MY_ROZETKA_URL;
 /**
  * Created by Vladislav Kulasov on 03.02.2018.
  */
-public class Signup {
+public class Signup extends MainPage {
     private static final String ROZETKA_SIGNUP_URL = MY_ROZETKA_URL + "signup/";
     private Logger logger = Logger.getLogger(this.getClass());
-    private WebDriver driver;
+
+    Element form = element(body, By.id("signup_form"));
+    Element name = element(form, By.name("title"));
+    Element email = element(form, By.name("login"));
+    Element password = element(form, By.name("password"));
+    Element submit = element(form, By.className("btn-link-i"));
 
     public static Signup openPage(WebDriver driver) {
         driver.get(ROZETKA_SIGNUP_URL);
@@ -27,72 +33,26 @@ public class Signup {
     }
 
     public Signup(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
         logger.info("wait Signup page");
         new WebDriverWait(driver, 60).until(
-                ExpectedConditions.presenceOfElementLocated(UIObjects.FORM.getBy()));
+                ExpectedConditions.presenceOfElementLocated(form.getBy()));
     }
 
-    public Signup setName(String value) {
-        logger.info("set name: " + value);
-        WebElement element = UIObjects.NAME.getWebElement(driver);
-        element.clear();
-        element.sendKeys(value);
-        return this;
-    }
-
-    public Signup setEmail(String value) {
-        logger.info("set email: " + value);
-        WebElement element = UIObjects.EMAIL.getWebElement(driver);
-        element.clear();
-        element.sendKeys(value);
-        return this;
-    }
-
-    public Signup setPassword(String value) {
-        logger.info("set password: " + value);
-        WebElement element = UIObjects.PASSWORD.getWebElement(driver);
-        element.clear();
-        element.sendKeys(value);
-        return this;
-    }
-
-    public PersonalData clickOnSubmit() {
-        logger.info("click on submit");
-        UIObjects.SUBMIT.getWebElement(driver).click();
+    public PersonalData login(User user) {
+        logger.info("Login as user:" + user);
+        clearForm();
+        name.getWebElement().sendKeys(user.getName());
+        email.getWebElement().sendKeys(user.getEmail());
+        password.getWebElement().sendKeys(user.getPassword());
+        submit.getWebElement().click();
         return new PersonalData(driver);
     }
 
-
-    private enum UIObjects implements PoEnum {
-        FORM(MainPage.BODY, By.id("signup_form")),
-        NAME(FORM, By.name("title")),
-        EMAIL(FORM, By.name("login")),
-        PASSWORD(FORM, By.name("password")),
-        SUBMIT(FORM, By.className("btn-link-i"));
-
-        private By by;
-        private Enum anEnum;
-
-        UIObjects(Enum anEnum, By by) {
-            this.anEnum = anEnum;
-            this.by = by;
-        }
-
-        @Override
-        public Enum getParentName() {
-            return anEnum;
-        }
-
-        @Override
-        public By getBy() {
-            return by;
-        }
-
-        @Override
-        public WebElement getWebElement(WebDriver driver) {
-            return ElementByEnum.getWebElement(driver, this);
-        }
+    public void clearForm() {
+        password.getWebElement().clear();
+        email.getWebElement().clear();
+        name.getWebElement().clear();
     }
 
 }
