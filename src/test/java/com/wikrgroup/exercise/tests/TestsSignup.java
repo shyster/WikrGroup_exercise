@@ -39,11 +39,7 @@ public class TestsSignup {
         User user = new User().getRandom();
 
         WebDriver driver = browser.getWebDriver();
-        Signup.openPage(driver)
-                .setName(user.getName())
-                .setEmail(user.getEmail())
-                .setPassword(user.getPassword())
-                .clickOnSubmit();
+        Signup.openPage(driver).login(user);
 
         //wait emails
         await().pollInterval(Duration.TEN_SECONDS).atMost(WAIT_EMAIL_MIN, MINUTES)

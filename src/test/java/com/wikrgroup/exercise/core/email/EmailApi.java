@@ -10,10 +10,16 @@ import java.util.List;
 public interface EmailApi {
 
     List<String> getDomains();
+
     List<EMail> getGetEmails(String emailBox);
+
     List<EMail> getEmailsFrom(String emailBox, String fromEmail);
+
     List<EMail> getEmailsFrom(String emailBox, String fromEmail, String subject);
+
     boolean containsEmailsFrom(String emailBox, String fromEmail);
+
     boolean containsEmailsFrom(String emailBox, String fromEmail, String subject);
+
     void deleteEmail(String md5Letter);
 }
