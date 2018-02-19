@@ -6,12 +6,11 @@ import org.openqa.selenium.WebDriver;
 /**
  * Created by Vladislav Kulasov on 05.02.2018.
  */
-public class MainPage extends BasePage {
+public class MainPage{
 
-    Element html = element(By.tagName("html"));
-    Element body = element(html, By.tagName("body"));
+    Element html = Element.newElement(By.tagName("html"));
+    Element body = Element.newElement(html, By.tagName("body"));
 
     public MainPage(WebDriver driver) {
-        super(driver);
     }
 }

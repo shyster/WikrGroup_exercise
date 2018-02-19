@@ -6,26 +6,32 @@ import org.openqa.selenium.WebElement;
 
 public class Element {
 
-    private final WebDriver driver;
-    private final By by;
+    private By by = null;
     private Element parentContext;
 
-    public Element(WebDriver driver, By by) {
-        this.driver = driver;
+    public Element(By by) {
         this.by = by;
     }
 
-    public Element(WebDriver driver, Element searchContext, By by) {
-        this(driver, by);
+    public Element(Element searchContext, By by) {
+        this(by);
         this.parentContext = searchContext;
     }
 
-    public WebElement getWebElement() {
-        return parentContext == null ? driver.findElement(by) : parentContext.getWebElement().findElement(by);
+    public WebElement getWebElement(WebDriver driver) {
+        return parentContext == null ? driver.findElement(by) : parentContext.getWebElement(driver).findElement(by);
     }
 
     public By getBy() {
         return by;
+    }
+
+    public static Element newElement(By by) {
+        return new Element(by);
+    }
+
+    public static Element newElement(Element parent, By by) {
+        return new Element(parent, by);
     }
 
 }
