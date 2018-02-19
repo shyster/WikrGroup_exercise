@@ -12,12 +12,12 @@ import static com.wikrgroup.exercise.core.Constants.MY_ROZETKA_URL;
 /**
  * Created by Vladislav Kulasov on 03.02.2018.
  */
-public class Signup extends MainPage {
+public class Signup{
     private static final String ROZETKA_SIGNUP_URL = MY_ROZETKA_URL + "signup/";
     private Logger logger = Logger.getLogger(this.getClass());
     private WebDriver driver;
 
-    Element form = Element.newElement(body, By.id("signup_form"));
+    Element form = Element.newElement(By.id("signup_form"));
     Element name = Element.newElement(form, By.name("title"));
     Element email = Element.newElement(form, By.name("login"));
     Element password = Element.newElement(form, By.name("password"));
@@ -33,7 +33,6 @@ public class Signup extends MainPage {
     }
 
     public Signup(WebDriver driver) {
-        super(driver);
         this.driver = driver;
         logger.info("wait Signup page");
         new WebDriverWait(driver, 60).until(

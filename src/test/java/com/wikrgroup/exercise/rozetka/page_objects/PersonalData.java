@@ -11,7 +11,7 @@ import static com.wikrgroup.exercise.core.Constants.MY_ROZETKA_URL;
 /**
  * Created by Vladislav Kulasov on 03.02.2018.
  */
-public class PersonalData extends MainPage {
+public class PersonalData{
     private static final String PERSONAL_DATA_URL = MY_ROZETKA_URL + "/profile/personal-information/";
     private Logger logger = Logger.getLogger(this.getClass());
     private WebDriver driver;
@@ -35,7 +35,6 @@ public class PersonalData extends MainPage {
     }
 
     public PersonalData(WebDriver driver) {
-        super(driver);
         this.driver = driver;
         logger.info("wait Personal Data page");
         new WebDriverWait(driver, 120).until(
